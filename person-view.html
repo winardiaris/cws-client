@@ -151,41 +151,14 @@
 			                           <hr>
 			                        </div>
 			                        <div class="panel-footer">
-					                        <button type="button" id="SavePersonInformation" class="btn btn-success"><i class="fa fa-save"></i> Save</button>
+					                        <button type="button" id="UpdatePersonInformation" class="btn btn-success"><i class="fa fa-save"></i> Save</button>
 			                        </div>
 			                     </div>
 																	<input name="op" value="person_save" type="hidden">
 																	<input name="unhcr_case_number" value="" type="hidden">
 													</form>
 			                  </div>
-			                  
-<!--
-			                  <div class="panel panel-default">
-			                     <div class="panel-heading">
-			                        <h5 class="panel-title">
-			                           <a data-toggle="collapse" data-parent="#accordion" href="#Education">Education</a>
-			                        </h5>
-			                     </div>
-			                     <div id="Education" class="panel-collapse collapse  ">
-			                        <div class="panel-body">
-			                           <div class="col-lg-6">
-			                              <div class="education"></div>
-			                           </div>
-			                           <div class="col-lg-6">
-			                              <label>Skills:</label>
-			                              <textarea class="form-control" name="skill" id="skill"></textarea>
-			                              <label>Mother Tongue:</label>
-			                              <input class="form-control" name="mother-tongue" id="mot" value="">
-			                              <label>Knowledge of other languAges:</label>
-			                              <input class="form-control" name="known-languAge" id="known_languAge" value="">
-			                           </div>
-			                        </div>
-			                        <div class="panel-footer">
-																	<button type="submit" id="SaveEducation" class="btn btn-success"><i class="fa fa-save"></i> Save</button>
-			                        </div>
-			                     </div>
-			                  </div>
--->
+
 			                  <!-- B panel -->
 			                  <div class="panel panel-default">
 			                     <div class="panel-heading">
@@ -401,7 +374,7 @@
 					//~ });
           
            
-				$('#SavePersonInformation').click(function(){
+				$('#UpdatePersonInformation').click(function(){
 					var unhcr_case_number = $('#unhcr_case_number');
 					if(unhcr_case_number.val()==''){
 						alert("UNHCR Case No: Must be filled !!");
@@ -443,28 +416,7 @@
 					}
 				});
 				
-				//~ $('#SaveEducation').click(function(){
-					//~ var res ="{";
-					//~ $("div.education div.checkbox").each(function(){
-						//~ var education_name = $(this).attr("id");
-						//~ res +='"'+education_name+'":[{';
-						
-						//~ $("#"+education_name+" input[type='checkbox']" ).each(function(){
-							//~ if($(this).is(":checked")){	
-								//~ res +='"'+$(this).val()+'":"true",';
-							//~ }
-							//~ else{
-								//~ res +='"'+$(this).val()+'":"false",';
-							//~ }
-						//~ });
-						
-						//~ res +='}],';
-					//~ });
-					//~ res +="}";
-					
-					//~ console.log(res);
-				//~ });
-				
+		
 				
           $(document).ready(function(){
 	         	$("#UploadImage").attr("action",SERVER_URL+"upload.php");
