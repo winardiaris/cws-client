@@ -30,191 +30,88 @@
       <div id="wrapper">
 			   <div id="page-wrapper" style="min-height: 292px;">
 			      <div class="row">
-			         <div class="col-lg-10">
-			            <h3 class="page-header">Personal Information </h3>
-			         </div>
-			         <div class="col-lg-2 text-center">
-			            <div class="photo"><img id="photo-pp" src="images/default.png"></div>
-			            <iframe name="iframe" width="0" height="0" style="display:none;width:0;height:0;"></iframe>
-									 <form id="UploadImage" enctype="multipart/form-data" action="" method="POST" target="iframe">
-											<fieldset>
-												 <input type="file" name="userfile" id="file">
-												 <input type="hidden" name="unhcr_case_number2" id="unhcr_case_number2" required=""><br>
-												 <input name="op" value="UploadImage" type="hidden">
-												 <button type="submit" class="btn btn-sm btn-success" value="Upload" name="upload" id="btnupload" ><i class="fa fa-upload"></i> Upload</button>
-												 <fieldset>
-												 </fieldset>
-											</fieldset>
-									 </form>
-			            <!-- buat photo -->
-			         </div>
-			         <div class="col-lg-4">
-			            <div class="form-group">
-			               <label>UNHCR Case No: *</label> <span id="a"></span>
-			               <input class="form-control" name="unhcr_case_number1" id="unhcr_case_number">
-			            </div>
-			         </div>
-			         <div class="col-lg-12">
-			            <div class="row">
-			               <div class="panel-group" id="accordion">
-			                  <!-- A panel -->
-			                  <div class="panel panel-default">
-													<form name="PersonalInformationForm" id="PersonalInformationForm" >
-			                     <div class="panel-heading">
-			                        <h5 class="panel-title">
-			                           <a data-toggle="collapse" data-parent="#accordion" href="#PersonalInformation">Reported Personal Information</a>
-			                        </h5>
-			                     </div>
-			                     <div id="PersonalInformation" class="panel-collapse collapse in">
-			                        <div class="panel-body">
-			                           <!-- biodata -->
-			                           <!-- form-biodata -->
-			                           <div class="col-lg-6">
-			                              <label>Name: *</label>
-			                              <input class="form-control" name="person_name" id="PersonName" required value="">
-			                              <label>Country of Origin: *</label>
-			                              <input type="hidden" id="country2" value="" required>
-																		<input name="country_of_origin_id" list="CountryOrigin" class="form-control">
-																		<datalist id="CountryOrigin">  
-																		
-																		</datalist>
-			                              <label>Date of Birth: *</label>
-			                              <div class="input-group date" data-provide="datepicker" data-date-format="yyyy-mm-dd">
-			                                 <input type="text" class="form-control" name="date_of_birth" id="DateOfBirth" placeholder="yyyy-mm-dd" value="" required><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-			                              </div>
-			                              <label>Age</label> <input class="form-control" name="age" placeholder="Age" id="Age" value="">		
-			                              <label>Sex: *</label>
-			                              <div class="form-group">
-			                                 <label class="radio-inline"><input type="radio" name="sex" value="M" checked="">Male</label>
-			                                 <label class="radio-inline"><input type="radio" name="sex" value="F">Female</label>
-			                              </div>
-			                              <label>Marital status: *</label>
-			                              <input type="hidden" id="MA" value="">
-			                              <select class="form-control" name="marital_status_id" id="marital"></select>
-			                              <label>Address (in detail): *</label>
-			                              <div class="form-group">
-			                                 <small>Province</small>
-			                                 <select name="address_province" id="province" class="form-control"></select>
-			                                 <small>Regency / City</small>
-			                                 <select name="address_city" id="city" class="form-control"></select>
-			                                 <small>Sub-district / VillAge</small>
-			                                 <select name="address_village" id="village" class="form-control"></select>
-			                                 <small>In Detail</small>
-			                                 <textarea name="address_detail" class="form-control" id="detail" placeholder="Detail"></textarea>
-			                              </div>
-			                              <label>Phone No: *</label>
-			                              <input class="form-control" name="phone_number" id="phone" value="" required="">
-			                              <label>Photo: </label>
-			                              <span id="upload"></span>
-			                           </div>
-			                           <!-- col-lg-6 -->
-			                           <div class="col-lg-6">
-			                              <label>Status:</label>
-			                              <select class="form-control" name="status" id="status">
-			                                 <option>Refugee</option>
-			                                 <option>Asylum Seeker</option>
-			                              </select>
-			                              <label>Date &amp; port arrival: *</label>
-			                              <div class="input-group date" data-provide="datepicker" data-date-format="yyyy-mm-dd">
-			                                 <input type="text" class="form-control" name="date_arrival" id="date_arrival" value="" placeholder="yyyy-mm-dd"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-			                              </div>
-			                              <br>
-			                              <input class="form-control" name="port_arrival" id="arrival" placeholder="Port Arrival" value="">
-			                              <hr>
-			                              <label>Previous occupation:</label>
-			                              <input class="form-control" name="previous_occupation" id="previous_occupation" value="">
-			                              <label>Willingness to volunteer:</label>		
-			                              <input class="form-control" name="willingness_to_volunteer" id="volunteer" value="">
-			                              <label>Date of recognition:</label><br>
-			                              <div class="row col-lg-6">
-			                                 <div class="input-group date" data-provide="datepicker" data-date-format="yyyy-mm-dd">
-			                                    <input type="text" class="form-control" name="date_of_recognition" id="date_of_recognition" placeholder="yyyy-mm-dd" value=""><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-			                                 </div>
-			                              </div>
-			                              <div class="row col-lg-6">
-			                                 <div class="input-group date" data-provide="datepicker" data-date-format="yyyy-mm-dd">
-			                                    <input type="text" class="form-control" name="date_of_recognition2" id="date_recognition2" placeholder="yyyy-mm-dd" value=""><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-			                                 </div>
-			                              </div>
-			                              <br>
-			                              <br>
-			                              <br>
-			                              <label>Active?: </label>
-			                              <select class="form-control" name="active" id="status_active">
-			                                 <option value="1">Active</option>
-			                                 <option value="2">Terminated</option>
-			                                 <option value="3">Deleted</option>
-			                                 <option value="4">Inactive</option>
-			                              </select>
-			                              <br>
-			                           </div>
-			                           <hr>
-			                        </div>
-			                        <div class="panel-footer">
-					                        <button type="button" id="UpdatePersonInformation" class="btn btn-success"><i class="fa fa-save"></i> Save</button>
-			                        </div>
-			                     </div>
-																	<input name="op" value="person_save" type="hidden">
-																	<input name="unhcr_case_number" value="" type="hidden">
-													</form>
-			                  </div>
+              <div class="col-lg-10">
+                 <h3 class="page-header">Personal Information </h3>
+              </div>
+              <div class="col-lg-2 text-center">
+                <div class="photo"><img id="photo-pp" src=""></div><br>
+              </div>
+              <div class="col-lg-12">
 
-			                  <!-- B panel -->
-			                  <div class="panel panel-default">
-			                     <div class="panel-heading">
-			                        <h5 class="panel-title">
-			                           <a data-toggle="collapse" data-parent="#accordion" href="#ReportedFamily">Reported family members</a>
-			                        </h5>
-			                     </div>
-			                     <div id="ReportedFamily" class="panel-collapse collapse  ">
-			                        <div class="panel-body">
-			                           <div class="col-lg-6">
-			                              <label>Name</label>
-			                              <input class="form-control" id="family-name" placeholder="Name">
-			                              <label>Age</label>
-			                              <input class="form-control" id="family-Age" type="number" placeholder="Age">
-			                              <label>Sex</label>
-			                              <div class="form-group">
-			                                 <label class="radio-inline"><input type="radio" name="family-sex" id="family-sex" value="M" checked="">Male</label>
-			                                 <label class="radio-inline"><input type="radio" name="family-sex" id="family-sex" value="F">Female</label>
-			                              </div>
-			                              <label>Relation</label>
-			                              <select class="form-control" name="family-relation" id="family-relation"></select>
-			                           </div>
-			                           <div class="col-lg-6">
-			                              <label>Current location</label>
-			                              <textarea class="form-control" id="family-location" placeholder="Locations"></textarea>
-			                              <label>Remarks</label>
-			                              <textarea class="form-control" id="family-remarks" placeholder="Remarks"></textarea>
-			                              <label>Last Contact family?:</label>
-			                              <textarea class="form-control" id="family-contact" placeholder="Type here"></textarea>
-			                           </div>
-			                           <div class="col-lg-12">
-																	 <hr>
-																	<button class="btn btn-sm btn-success" id="AddFamily" title="Add family"><i class="fa fa-plus"></i> Add </button>			
-			                           </div>
-			                           <div class="col-lg-12" id="family"></div>
-			                        </div>
-			                     </div>
-			                  </div>
-			               </div>
-			            </div>
-			            <div class="col-lg-12">
-			               <label>Comment:</label>
-			               <textarea class="form-control" id="comment"></textarea>
-			               <br><small id="t"></small>
-			            </div>
-			         </div>
-			         <!-- row -->
-			      </div>
+              <hr>
+              <table class="table table-bordered table-striped">
+              <tbody><tr>
+                <td><b>UNHCR Case No:</b></td>
+                   <td><span id="unhcr_case_number"></span></td>
+                <td><b>Status:</b></td>
+                   <td><span id="status"></span></td>
+              </tr>
+              <tr>
+                <td><b>Name:</b></td>
+                <td><span id="person_name"></span></td>
+                <td><b>Date &amp; port arrival:</b></td>
+                <td><span id="date_arrival"></span>, <span id="port_arrival"></span></td>
+              </tr>
+              <tr>
+                <td><b>Country of Origin:</b></td>
+                <td><span id="country_of_origin"></span></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><b>Date of Birth / Age:</b></td>
+                <td><span id="date_of_birth"></span> / <span id="age"></span></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><b>Sex:</b></td>
+                <td><span id="sex"></span></td>
+                <td><b>Mother of Tongue:</b></td>
+                <td><span id="mother_of_tongue"></span></td>
+              </tr>
+              <tr>
+                <td><b>Marital Status:</b></td>
+                <td><span id="marital_status"></span></td>
+                <td><b>Knowledge of other languages:</b></td>
+                <td><span id="known_language"></span></td>
+              </tr>
+              <tr>
+                <td><b>Address (in detail):</b></td>
+                <td><span id="address"></span></td>
+                <td><b>Previous occupation:</b></td>
+                <td><span id="previous_occupation"></span></td>
+              </tr>
+              <tr>
+                <td><b>Phone Number:</b></td>
+                <td><span id="phone_number"></span></td>
+                <td><b>Willingness to volunteer:</b></td>
+                <td><span id="willingness_to_volunteer"></span></td>
+              </tr>
+              <tr>
+                <td><b>Active Status:</b></td>
+                <td><span id="active"></span></td>
+                <td><b>Date of recognition:</b></td>
+                <td><span id="date_of_recognition"></span> - <span id="date_of_recognition2"></span></td>
+              </tr>
+              </tbody></table>
+
+              <h5>Reported family member</h5>
+              <div id="family_list"></div>
+
+              <b>Comment:</b><p style="margin-left:20px;" id="comment"></p><span class="page-break"></span>
+                </div>
+            </div>
 			      <!-- row -->
 			   </div>
-			   <!-- page-wrapper -->    
+			   <!-- page-wrapper -->
 			</div><!--wrapper -->
-     
-     
-     
-     
+
+
+
+
+      <script src="js/init.js"></script>
+      <script src="js/personal.js"></script>
       <script src="js/jquery.md5.js"></script>
       <!-- Bootstrap Core JavaScript -->
       <script src="js/bootstrap.min.js"></script>
@@ -223,211 +120,65 @@
       <script src="js/metisMenu.min.js"></script>
       <!-- Custom Theme JavaScript -->
       <script src="js/sb-admin-2.js"></script>
-      <script src="js/init.js"></script>
       <script>
-         var SERVER_URL = "http://192.168.1.99/cws2/";
-         	
-           $('#DateOfBirth').change(function(){
-         	var DateOfBirth = new Date(this.value);
-         	var today = new Date();
-         	var Age = Math.floor((today-DateOfBirth) / (365.25 * 24 * 60 * 60 * 1000));
-         	$('#Age').val(Age);
-         });
-         
-         //get country list
-         $.get(SERVER_URL+"?op=get_data_country_list",function(result){
-         		var country_select ="";
-         		var json = $.parseJSON(result);
-         		var data = json['data'];
-         		for(var i = 0; i <data.length;i++){
-         			var country_id = data[i].country_id;
-         			var country_name = data[i].country_name;
-         			
-         			country_select +="<option value='"+country_id+"'>"+country_name+"</option>";
-         		}
-         		$('#CountryOrigin').html(country_select);
-         		
-         		
-         		
-         });
-         //get marital status
-         $.get(SERVER_URL+"?op=get_marital_status_list",function(result){
-         		var marital_select ="";
-         		var json = $.parseJSON(result);
-         		var data = json['data'];
-         		for(var i = 0; i <data.length;i++){
-         			var marital_id = data[i].marital_id;
-         			var marital = data[i].marital;
-         			
-         			marital_select +="<option value='"+marital_id+"'>"+marital+"</option>";
-         		}
-         		$('#marital').html(marital_select);
-         		
-         		
-         		
-         });
-         
-         //get province
-         $.get(SERVER_URL+"?op=get_data_region_province",function(result){
-         		var province ="";
-         		var json = $.parseJSON(result);
-         		var data = json['data'];
-         		for(var i = 0; i <data.length;i++){
-         			var region_id = data[i].region_id;
-         			var region_name = data[i].region_name;
-         			province +="<option value='"+region_id+"'>"+region_name+"</option>";
-         		}
-         		$('#province').html(province);
-         });
-         
-         //get city
-         $('#province').change(function(){
-         	$('#village').html('');
-         	$.get(SERVER_URL+"?op=get_data_region_city&region_id="+$(this).val(),function(result){
-         			var city ="";
-         			var json = $.parseJSON(result);
-         			var data = json['data'];
-         			for(var i = 0; i <data.length;i++){
-         				var region_id = data[i].region_id;
-         				var region_name = data[i].region_name;
-         				city +="<option value='"+region_id+"'>"+region_name+"</option>";
-         			}
-         			$('#city').html(city);
-         	});
-         });
-         
-         //get village
-         $('#city').change(function(){
-         	$.get(SERVER_URL+"?op=get_data_region_village&region_id="+$(this).val(),function(result){
-         			var village ="";
-         			var json = $.parseJSON(result);
-         			var data = json['data'];
-         			for(var i = 0; i <data.length;i++){
-         				var region_id = data[i].region_id;
-         				var region_name = data[i].region_name;
-         				village +="<option value='"+region_id+"'>"+region_name+"</option>";
-         			}
-         			$('#village').html(village);
-         	});
-         });
-         
-         
-         //get family relation
-         $.get(SERVER_URL+"?op=get_data_family_relation_list",function(result){
-         		var family_list ="";
-         		var json = $.parseJSON(result);
-         		var data = json['data'];
-         		for(var i = 0; i <data.length;i++){
-         			var family_relation_id = data[i].family_relation_id;
-         			var relation = data[i].relation;
-         			family_list +="<option value='"+family_relation_id+"'>"+relation+"</option>";
-         		}
-         		$('#family-relation').html(family_list);	
-         });
-         
-         $("#unhcr_case_number").change(function(){
-         	var unhcr_case_number = $(this).val();		
-         	$.get(SERVER_URL+"?op=get_person_available&unhcr_case_number="+unhcr_case_number,function(result){
-         			var village ="";
-         			var json = $.parseJSON(result);
-         			var data = json['data'];
-         			var status = data.status;
-         			if(status=="inuse"){
-         				$("#a").addClass("text-warning").removeClass("text-success text-danger").html("<i class='fa fa-warning'></i> In use");
-         			}
-         			else if(status=="avail"){
-         				$("#a").addClass("text-success").removeClass("text-danger text-warning").html("<i class='fa fa-check'></i> Available");
-         			}
-         	});
-         	$("input[name='unhcr_case_number2']").val(unhcr_case_number);
-         	$("input[name='unhcr_case_number']").val(unhcr_case_number);
-           });
-           
-          //~ $.get(SERVER_URL+"?op=get_education_list",function(result){
-         		//~ var education_list ="";
-         		//~ var json = $.parseJSON(result);
-         		//~ var data = json['data'];
-         		
-         			//~ for(var i = 0; i <data.length;i++){
-								//~ var education_name = data[i].education_name;
-								//~ var education_type = data[i].education_type;
-								//~ var edu ="";
-								//~ edu += "<label>"+education_name+"</label><div class='checkbox' id='data_education_"+education_name+"'></div>";								
-								//~ education_list +=edu;
-							//~ }
-							
-						//~ $('div.education').append(education_list);
-					//~ })
-					//~ .done(function(){
-						//~ $("div.education div.checkbox").each(function(){
-							//~ //var education = 
-							//~ var education_name = $(this).attr("id");
-							//~ var edu_ = "";
-							//~ $.get(SERVER_URL+"?op=get_education_data_list&table="+education_name,function(result2){
-								//~ var json2 = $.parseJSON(result2);
-								//~ var data2 = json2['data'];										
-								//~ for(var j=0;j<data2.length;j++){
-									//~ $("#"+education_name).append("<label><input type='checkbox' value='"+data2[j].id+"'>"+data2[j].data+"</label> ");
-								//~ }
-							//~ });
-						//~ });
-					//~ });
-          
-           
-				$('#UpdatePersonInformation').click(function(){
-					var unhcr_case_number = $('#unhcr_case_number');
-					if(unhcr_case_number.val()==''){
-						alert("UNHCR Case No: Must be filled !!");
-						unhcr_case_number.focus();
-					}
-					else{
-						var a = $("#a").text();
-						if(a=="In use"){
-							alert("UNHCR Case No: In use");
-							unhcr_case_number.focus();
-						}
-						else{
-							//simpan
-							$.ajax({
-								type: "POST",
-								cache: false,
-								url: SERVER_URL,
-								data: $('#PersonalInformationForm').serialize(),
-								dataType:'text',
-								success: function(result){
-									var json = $.parseJSON(result);
-									var data = json['data'];
-									var status = data.status;
-									if(status=="success"){
-										$("#PersonalInformation").removeClass("in");
-										$("#Education").addClass("in");
-										//~ window.location.href("#Education");
-									}
-									else{
-										alert(status);
-										
-									}
-								},
-								error: function (request, status, error) {
-						        alert(request.responseText);
-						    }
-							});
-						}
-					}
-				});
-				
-		
-				
+          var SERVER_URL = "http://192.168.1.99/cws2/";
+          var current_url = $(location).attr('href');
+          var secret_key = localStorage.getItem("secret_key");
+          var unhcr_case_number_ = current_url.split("unhcr_case_number");
+          var unhcr_case_number = unhcr_case_number_[1].replace("=","");
+          $.get(SERVER_URL+"?op=person_view&secret_key="+secret_key+"&unhcr_case_number="+unhcr_case_number,function(result){
+            var json = $.parseJSON(result);
+            var data = json['data'];
+            console.log(data);
+
+            var active;
+            if(data[0].active=="1"){
+              active = "Active";
+            }
+            else if (data[0].active=="2") {
+              active = "Terminated";
+            }
+            else if (data[0].active=="3") {
+              active="Deleted";
+            }
+            else {
+              active="Inactive";
+            }
+
+            $("#photo-pp").attr("src",SERVER_URL+data[0].photo);
+            $("#person_name").text(data[0].person_name);
+            $("#unhcr_case_number").text(data[0].unhcr_case_number);
+            $("#country_of_origin").text(data[0].country);
+            $("#date_of_birth").text(data[0].date_of_birth);
+            $("#age").text(data[0].age);
+            $("#marital_status").text(data[0].marital_status_id);
+            $("#sex").text(data[0].sex);
+            $("#address").text(data[0].address);
+            $("#phone_number").text(data[0].phone_number);
+            $("#active").text(active);
+            $("#status").text(data[0].status);
+            $("#date_arrival").text(data[0].date_arrival);
+            $("#port_arrival").text(data[0].port_arrival);
+            $("#previous_occupation").text(data[0].previous_occupation);
+            $("#willingness_to_volunteer").text(data[0].willingness_to_volunteer);
+            $("#date_of_recognition").text(data[0].date_of_recognition);
+            $("#date_of_recognition2").text(data[0].date_of_recognition2);
+            $("#comment").text(data[0].comment);
+
+
+            list_family_members(unhcr_case_number);
+
+
+          });
+
+
+
           $(document).ready(function(){
-	         	$("#UploadImage").attr("action",SERVER_URL+"upload.php");
-	         	$("#file").hide();
-	         	$("#photo-pp").click(function(){
-							$("#file").click();
-						});
+	         	$("input,textarea").attr("disabled",true);
 	        });
-         
-          
-           
+
+
+
       </script>
    </body>
 </html>

@@ -75,14 +75,14 @@
 			                              <label>Country of Origin: *</label>
 			                              <input type="hidden" id="country2" value="" required>
 																		<input name="country_of_origin_id" list="CountryOrigin" class="form-control">
-																		<datalist id="CountryOrigin">  
-																		
+																		<datalist id="CountryOrigin">
+
 																		</datalist>
 			                              <label>Date of Birth: *</label>
 			                              <div class="input-group date" data-provide="datepicker" data-date-format="yyyy-mm-dd">
 			                                 <input type="text" class="form-control" name="date_of_birth" id="DateOfBirth" placeholder="yyyy-mm-dd" value="" required><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
 			                              </div>
-			                              <label>Age</label> <input class="form-control" name="age" placeholder="Age" id="Age" value="">		
+			                              <label>Age</label> <input class="form-control" name="age" placeholder="Age" id="Age" value="">
 			                              <label>Sex: *</label>
 			                              <div class="form-group">
 			                                 <label class="radio-inline"><input type="radio" name="sex" value="M" checked="">Male</label>
@@ -123,8 +123,11 @@
 			                              <hr>
 			                              <label>Previous occupation:</label>
 			                              <input class="form-control" name="previous_occupation" id="previous_occupation" value="">
-			                              <label>Willingness to volunteer:</label>		
-			                              <input class="form-control" name="willingness_to_volunteer" id="volunteer" value="">
+			                              <label>Willingness to volunteer:</label>
+                                    <select class="form-control" name="willingness_to_volunteer" id="willingness_to_volunteer">
+                                       <option value="yes">Yes</option>
+                                       <option value="no">No</option>
+                                    </select>
 			                              <label>Date of recognition:</label><br>
 			                              <div class="row col-lg-6">
 			                                 <div class="input-group date" data-provide="datepicker" data-date-format="yyyy-mm-dd">
@@ -158,34 +161,6 @@
 																	<input name="unhcr_case_number" value="" type="hidden">
 													</form>
 			                  </div>
-			                  
-<!--
-			                  <div class="panel panel-default">
-			                     <div class="panel-heading">
-			                        <h5 class="panel-title">
-			                           <a data-toggle="collapse" data-parent="#accordion" href="#Education">Education</a>
-			                        </h5>
-			                     </div>
-			                     <div id="Education" class="panel-collapse collapse  ">
-			                        <div class="panel-body">
-			                           <div class="col-lg-6">
-			                              <div class="education"></div>
-			                           </div>
-			                           <div class="col-lg-6">
-			                              <label>Skills:</label>
-			                              <textarea class="form-control" name="skill" id="skill"></textarea>
-			                              <label>Mother Tongue:</label>
-			                              <input class="form-control" name="mother-tongue" id="mot" value="">
-			                              <label>Knowledge of other languAges:</label>
-			                              <input class="form-control" name="known-languAge" id="known_languAge" value="">
-			                           </div>
-			                        </div>
-			                        <div class="panel-footer">
-																	<button type="submit" id="SaveEducation" class="btn btn-success"><i class="fa fa-save"></i> Save</button>
-			                        </div>
-			                     </div>
-			                  </div>
--->
 			                  <!-- B panel -->
 			                  <div class="panel panel-default">
 			                     <div class="panel-heading">
@@ -195,39 +170,50 @@
 			                     </div>
 			                     <div id="ReportedFamily" class="panel-collapse collapse  ">
 			                        <div class="panel-body">
+                                <form id="FormAddFamily" name="FormAddFamily">
 			                           <div class="col-lg-6">
+			                              <label>UNHCR</label>
+			                              <input class="form-control" name="unhcr_case_number_family" id="unhcr_case_number_family" placeholder="UNHCR (if has)">
 			                              <label>Name</label>
-			                              <input class="form-control" id="family-name" placeholder="Name">
-			                              <label>Age</label>
-			                              <input class="form-control" id="family-Age" type="number" placeholder="Age">
+			                              <input class="form-control" name="family_name" id="family_name" placeholder="Family Name">
+                                    <label>Date of Birth: *</label>
+			                              <div class="input-group date" data-provide="datepicker" data-date-format="yyyy-mm-dd">
+			                                 <input type="text" class="form-control" name="family_date_of_birth" id="family_date_of_birth" placeholder="yyyy-mm-dd" value="" ><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+			                              </div>
+			                              <label>Age</label> <input class="form-control" name="family_age" placeholder="Age" id="family_age" value="">
 			                              <label>Sex</label>
 			                              <div class="form-group">
-			                                 <label class="radio-inline"><input type="radio" name="family-sex" id="family-sex" value="M" checked="">Male</label>
-			                                 <label class="radio-inline"><input type="radio" name="family-sex" id="family-sex" value="F">Female</label>
+			                                 <label class="radio-inline"><input type="radio" name="family_sex" id="family_sex" value="M" checked="">Male</label>
+			                                 <label class="radio-inline"><input type="radio" name="family_sex" id="family_sex" value="F">Female</label>
 			                              </div>
-			                              <label>Relation</label>
-			                              <select class="form-control" name="family-relation" id="family-relation"></select>
 			                           </div>
 			                           <div class="col-lg-6">
+                                   <label>Relation</label>
+                                   <select class="form-control" name="family_relation_id" id="family_relation_id"></select>
 			                              <label>Current location</label>
-			                              <textarea class="form-control" id="family-location" placeholder="Locations"></textarea>
+			                              <textarea class="form-control" name="family_location" id="family_location" placeholder="Locations"></textarea>
+                                    <label>Last Contact family?:</label>
+                                    <textarea class="form-control" name="family_last_contact" id="family_last_contact" placeholder="Type here"></textarea>
 			                              <label>Remarks</label>
-			                              <textarea class="form-control" id="family-remarks" placeholder="Remarks"></textarea>
-			                              <label>Last Contact family?:</label>
-			                              <textarea class="form-control" id="family-contact" placeholder="Type here"></textarea>
+			                              <textarea class="form-control" name="family_remarks" id="family_remarks" placeholder="Remarks"></textarea>
 			                           </div>
 			                           <div class="col-lg-12">
 																	 <hr>
-																	<button class="btn btn-sm btn-success" id="AddFamily" title="Add family"><i class="fa fa-plus"></i> Add </button>			
-			                           </div>
-			                           <div class="col-lg-12" id="family"></div>
+																	<button type="button" class="btn btn-sm btn-success" id="AddFamily" title="Add family"><i class="fa fa-plus"></i> Add </button><br>
+                                  <input name="op" value="add_person_family" type="hidden">
+                                  <input name="unhcr_case_number" value="" type="hidden">
+                              </form>
+                                </div>
+
+			                           <div class="col-lg-12" id="family_list"></div>
+
 			                        </div>
 			                     </div>
 			                  </div>
 			               </div>
 			            </div>
 			            <div class="col-lg-12">
-			               <label>Comment:</label>
+			               <label class="comment">Comment:</label>
 			               <textarea class="form-control" id="comment"></textarea>
 			               <br><small id="t"></small>
 			            </div>
@@ -236,12 +222,14 @@
 			      </div>
 			      <!-- row -->
 			   </div>
-			   <!-- page-wrapper -->    
+			   <!-- page-wrapper -->
 			</div><!--wrapper -->
-     
-     
-     
-     
+
+
+
+
+      <script src="js/init.js"></script>
+      <script src="js/personal.js"></script>
       <script src="js/jquery.md5.js"></script>
       <!-- Bootstrap Core JavaScript -->
       <script src="js/bootstrap.min.js"></script>
@@ -250,17 +238,23 @@
       <script src="js/metisMenu.min.js"></script>
       <!-- Custom Theme JavaScript -->
       <script src="js/sb-admin-2.js"></script>
-      <script src="js/init.js"></script>
       <script>
          var SERVER_URL = "http://192.168.1.99/cws2/";
-         	
-           $('#DateOfBirth').change(function(){
-         	var DateOfBirth = new Date(this.value);
-         	var today = new Date();
-         	var Age = Math.floor((today-DateOfBirth) / (365.25 * 24 * 60 * 60 * 1000));
-         	$('#Age').val(Age);
+         var secret_key = localStorage.getItem("secret_key");
+
+          $('#DateOfBirth').change(function(){
+             	var DateOfBirth = new Date(this.value);
+             	var today = new Date();
+             	var Age = Math.floor((today-DateOfBirth) / (365.25 * 24 * 60 * 60 * 1000));
+             	$('#Age').val(Age);
          });
-         
+          $('#family_date_of_birth').change(function(){
+             	var DateOfBirth = new Date(this.value);
+             	var today = new Date();
+             	var Age = Math.floor((today-DateOfBirth) / (365.25 * 24 * 60 * 60 * 1000));
+             	$('#family_age').val(Age);
+         });
+
          //get country list
          $.get(SERVER_URL+"?op=get_data_country_list",function(result){
          		var country_select ="";
@@ -269,13 +263,9 @@
          		for(var i = 0; i <data.length;i++){
          			var country_id = data[i].country_id;
          			var country_name = data[i].country_name;
-         			
          			country_select +="<option value='"+country_id+"'>"+country_name+"</option>";
          		}
          		$('#CountryOrigin').html(country_select);
-         		
-         		
-         		
          });
          //get marital status
          $.get(SERVER_URL+"?op=get_marital_status_list",function(result){
@@ -285,15 +275,15 @@
          		for(var i = 0; i <data.length;i++){
          			var marital_id = data[i].marital_id;
          			var marital = data[i].marital;
-         			
+
          			marital_select +="<option value='"+marital_id+"'>"+marital+"</option>";
          		}
          		$('#marital').html(marital_select);
-         		
-         		
-         		
+
+
+
          });
-         
+
          //get province
          $.get(SERVER_URL+"?op=get_data_region_province",function(result){
          		var province ="";
@@ -306,7 +296,7 @@
          		}
          		$('#province').html(province);
          });
-         
+
          //get city
          $('#province').change(function(){
          	$('#village').html('');
@@ -322,7 +312,7 @@
          			$('#city').html(city);
          	});
          });
-         
+
          //get village
          $('#city').change(function(){
          	$.get(SERVER_URL+"?op=get_data_region_village&region_id="+$(this).val(),function(result){
@@ -337,8 +327,8 @@
          			$('#village').html(village);
          	});
          });
-         
-         
+
+
          //get family relation
          $.get(SERVER_URL+"?op=get_data_family_relation_list",function(result){
          		var family_list ="";
@@ -349,11 +339,11 @@
          			var relation = data[i].relation;
          			family_list +="<option value='"+family_relation_id+"'>"+relation+"</option>";
          		}
-         		$('#family-relation').html(family_list);	
+         		$('#family_relation_id').html(family_list);
          });
-         
+
          $("#unhcr_case_number").change(function(){
-         	var unhcr_case_number = $(this).val();		
+         	var unhcr_case_number = $(this).val();
          	$.get(SERVER_URL+"?op=get_person_available&unhcr_case_number="+unhcr_case_number,function(result){
          			var village ="";
          			var json = $.parseJSON(result);
@@ -368,39 +358,11 @@
          	});
          	$("input[name='unhcr_case_number2']").val(unhcr_case_number);
          	$("input[name='unhcr_case_number']").val(unhcr_case_number);
+
            });
-           
-          //~ $.get(SERVER_URL+"?op=get_education_list",function(result){
-         		//~ var education_list ="";
-         		//~ var json = $.parseJSON(result);
-         		//~ var data = json['data'];
-         		
-         			//~ for(var i = 0; i <data.length;i++){
-								//~ var education_name = data[i].education_name;
-								//~ var education_type = data[i].education_type;
-								//~ var edu ="";
-								//~ edu += "<label>"+education_name+"</label><div class='checkbox' id='data_education_"+education_name+"'></div>";								
-								//~ education_list +=edu;
-							//~ }
-							
-						//~ $('div.education').append(education_list);
-					//~ })
-					//~ .done(function(){
-						//~ $("div.education div.checkbox").each(function(){
-							//~ //var education = 
-							//~ var education_name = $(this).attr("id");
-							//~ var edu_ = "";
-							//~ $.get(SERVER_URL+"?op=get_education_data_list&table="+education_name,function(result2){
-								//~ var json2 = $.parseJSON(result2);
-								//~ var data2 = json2['data'];										
-								//~ for(var j=0;j<data2.length;j++){
-									//~ $("#"+education_name).append("<label><input type='checkbox' value='"+data2[j].id+"'>"+data2[j].data+"</label> ");
-								//~ }
-							//~ });
-						//~ });
-					//~ });
-          
-           
+
+
+
 				$('#SavePersonInformation').click(function(){
 					var unhcr_case_number = $('#unhcr_case_number');
 					if(unhcr_case_number.val()==''){
@@ -427,12 +389,12 @@
 									var status = data.status;
 									if(status=="success"){
 										$("#PersonalInformation").removeClass("in");
-										$("#Education").addClass("in");
+										$("#ReportedFamily").addClass("in");
 										//~ window.location.href("#Education");
 									}
 									else{
 										alert(status);
-										
+
 									}
 								},
 								error: function (request, status, error) {
@@ -442,40 +404,100 @@
 						}
 					}
 				});
-				
-				//~ $('#SaveEducation').click(function(){
-					//~ var res ="{";
-					//~ $("div.education div.checkbox").each(function(){
-						//~ var education_name = $(this).attr("id");
-						//~ res +='"'+education_name+'":[{';
-						
-						//~ $("#"+education_name+" input[type='checkbox']" ).each(function(){
-							//~ if($(this).is(":checked")){	
-								//~ res +='"'+$(this).val()+'":"true",';
-							//~ }
-							//~ else{
-								//~ res +='"'+$(this).val()+'":"false",';
-							//~ }
-						//~ });
-						
-						//~ res +='}],';
-					//~ });
-					//~ res +="}";
-					
-					//~ console.log(res);
-				//~ });
-				
-				
+        //add family
+        $("#AddFamily").click(function(){
+          var unhcr_case_number = $('#unhcr_case_number');
+          var unhcr_case_number_family = $('#unhcr_case_number_family');
+          var secret_key = localStorage.getItem("secret_key");
+
+          if(unhcr_case_number.val()==''){
+            alert("UNHCR Case No: Must be filled !!");
+            unhcr_case_number.focus();
+          }
+          else{
+            //simpan
+              $.ajax({
+                type: "POST",
+                cache: false,
+                url: SERVER_URL,
+                data: $('#FormAddFamily').serialize(),
+                dataType:'text',
+                success: function(result){
+                  var json = $.parseJSON(result);
+                  var data = json['data'];
+                  var status = data.status;
+                  if(status=="success"){
+                    var r = confirm("Insert new family members?");
+                    if (r == true) {
+                      $("#unhcr_case_number_family").val("");
+                      $("#family_name").val("");
+                      $("#family_date_of_birth").val("");
+                      $("#family_age").val("");
+                      $('#FormAddFamily').find("textarea").val("");
+                      $('#unhcr_case_number_family').focus();
+                    } else {
+                      window.location.replace("person-view.html?unhcr_case_number="+unhcr_case_number.val());
+                    }
+                    console.log(result);
+                    list_family_members(unhcr_case_number.val());
+                  }
+                  else{
+                    console.log(status);
+                  }
+                }
+              });
+          }
+        });
+
+        $('#comment').change(function(){
+          var comments = $(this).val();
+          var unhcr_case_number = $('#unhcr_case_number');
+          var unhcr_case_number_family = $('#unhcr_case_number_family');
+          var secret_keys = localStorage.getItem("secret_key");
+          var ops= "person_comment";
+          var datas = { op: ops, secret_key: secret_keys,unhcr_case_number:unhcr_case_number.val(),comment:comments };
+          if(unhcr_case_number.val()==''){
+            alert("UNHCR Case No: Must be filled !!");
+            unhcr_case_number.focus();
+          }
+          else{
+            //simpan
+            $.ajax({
+              type: "GET",
+              cache: false,
+              url: SERVER_URL,
+              data: datas,
+              dataType:'text',
+              success: function(result){
+                var json = $.parseJSON(result);
+                var data = json['data'];
+                var status = data.status;
+                if(status=="success"){
+                  $(".comment").after(" <small class='text-success'>Comment saved <i class='fa fa-check'></i></small>")
+                }
+                else{
+                  alert(status);
+                }
+              },
+              error: function (request, status, error) {
+                  alert(request.responseText);
+              }
+            });
+          }
+        });
+
+
           $(document).ready(function(){
 	         	$("#UploadImage").attr("action",SERVER_URL+"upload.php");
+            $('#AddFamily').after("<input name='secret_key' type='hidden' value='"+secret_key+"'>");
 	         	$("#file").hide();
 	         	$("#photo-pp").click(function(){
 							$("#file").click();
 						});
 	        });
-         
-          
-           
+
+
+
       </script>
    </body>
 </html>

@@ -58,6 +58,7 @@ $(function() {
 								var data2 = json2['data'];
 								var submenu = "";
 								var submenu_ = "";
+
 									// console.log("submenu-----------");
 									// console.log(data2);
 
@@ -72,32 +73,66 @@ $(function() {
 											if(b[4]==submenu_url){
 												class_ = " active ";
 											}
-
 											submenu_+='<li id="'+submenu_id+'" class="submenu"><a class="capital '+class_+'" href="'+submenu_url+'" ><i class="'+submenu_icon+'"></i> '+submenu_name+'</a ></li>';
 										}
 										submenu+='<ul class="nav nav-second-level" >'+submenu_+'</ul>';
 										//~ console.log(menu_id_);
 										$("#"+menu_id__+" a i").after('<span class="fa arrow"></span>');
 										$("#"+menu_id__+" a").after(submenu);
+
+
+										// subsubmenu -------------------------
+										var submenu_ = $("li.submenu");
+										// console.log(submenu_.length);
+										for (var j=0;j<submenu_.length;j++){
+											var submenu_id = submenu_.eq(j).attr("id");
+											$.get(SERVER_URL+"?op=get_subsubmenu_list&submenu_id="+submenu_id,function(result_subsubmenu){
+												var json_subsubmenu = $.parseJSON(result_subsubmenu);
+												var data_subsubmenu = json_subsubmenu['data'];
+												var subsubmenu="";
+												var subsubmenu_="";
+												if(data_subsubmenu.length>0){
+													for(var k = 0; k <data_subsubmenu.length;k++){
+														var submenu_id_ = data_subsubmenu[k].submenu_id;
+														var subsubmenu_icon = data_subsubmenu[k].subsubmenu_icon;
+														var subsubmenu_id = data_subsubmenu[k].subsubmenu_id;
+														var subsubmenu_name = data_subsubmenu[k].subsubmenu_name;
+														var subsubmenu_url = data_subsubmenu[k].url;
+
+														// console.log(subsubmenu_id);
+														subsubmenu_ += '<li id="'+subsubmenu_id+'"><a href="'+subsubmenu_url+'">'+subsubmenu_name+'</a></li>';
+													}
+													subsubmenu ='<ul id="subsub_'+submenu_id_+'" class="nav nav-third-level collapse in">'+subsubmenu_+'</ul>';
+													if($("#subsub_"+submenu_id_).length<1){
+														$("#"+submenu_id_+" a").append('<span class="fa arrow"></span>');
+														$("#"+submenu_id_).after(subsubmenu);
+													}
+												}
+											});
+
+										}
+
+										// subsubmenu -------------------------
+
+
 									}
 							});
 						}
 
-						console.log("menu+submenu selesai---");
-				}).
-				done(function(){
-					console.log("subsubmenu---");
-					var submenu_ = $("li.submenu");
-					console.log(submenu_.length);
-					// for (var k=0;k<submenu_.length;k++){
-					// 	var submenu_id_ = submenu_.eq(k).attr("id");
-					// 	console.log(submenu_id_);
-					// }
+						// console.log("menu+submenu selesai---");
 				});
+
+
+
+
+
+
+
+
 
 				//navigation
 				$("#wrapper").prepend(' <!-- Navigation -->'+
-		        '<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">'+
+		        '<nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">'+
 		            '<div class="navbar-header">'+
 		                '<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">'+
 		                    '<span class="sr-only">Toggle navigation</span>'+

@@ -1,6 +1,9 @@
+#page-wrapper{
+	margin-top: 30px !important;
+}
 *{
 	font-size: 10pt;
-	
+
 }
 #fix-atas{
 	margin-bottom:25px;
@@ -94,8 +97,8 @@ body.view{
 	height:120px;
 	width:100px;
 	margin:30px auto 0 auto;
-	
-	
+
+
 }
 .photos img{
 	height:100%;
@@ -200,7 +203,7 @@ body.view{
 	body.view{
 		padding-top:0;
 	}
-	
+
 }
 
 .capital{
