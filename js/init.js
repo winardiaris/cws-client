@@ -2,6 +2,7 @@ $(function() {
 	var SERVER_URL = "http://192.168.1.99/cws2/";
 	var current_url = $(location).attr('href');
 	var b = current_url.split("/");
+	var c = b[4].split("#");
 	var secret_key = localStorage.getItem("secret_key");
 	var secret_key_correct ;
 		//~ console.log("secret_key=>"+secret_key);
@@ -69,11 +70,8 @@ $(function() {
 											var submenu_id = data2[j].submenu_id;
 											var submenu_name = data2[j].submenu_name;
 											var submenu_url = data2[j].url;
-											var class_ ="";
-											if(b[4]==submenu_url){
-												class_ = " active ";
-											}
-											submenu_+='<li id="'+submenu_id+'" class="submenu"><a class="capital '+class_+'" href="'+submenu_url+'" ><i class="'+submenu_icon+'"></i> '+submenu_name+'</a ></li>';
+
+											submenu_+='<li id="'+submenu_id+'" class="submenu"><a class="capital" href="'+submenu_url+'" ><i class="'+submenu_icon+'"></i> '+submenu_name+'</a ></li>';
 										}
 										submenu+='<ul class="nav nav-second-level" >'+submenu_+'</ul>';
 										//~ console.log(menu_id_);
@@ -102,10 +100,10 @@ $(function() {
 														// console.log(subsubmenu_id);
 														subsubmenu_ += '<li id="'+subsubmenu_id+'"><a href="'+subsubmenu_url+'">'+subsubmenu_name+'</a></li>';
 													}
-													subsubmenu ='<ul id="subsub_'+submenu_id_+'" class="nav nav-third-level collapse in">'+subsubmenu_+'</ul>';
+													subsubmenu ='<ul id="subsub_'+submenu_id_+'" class="nav nav-third-level">'+subsubmenu_+'</ul>';
 													if($("#subsub_"+submenu_id_).length<1){
 														$("#"+submenu_id_+" a").append('<span class="fa arrow"></span>');
-														$("#"+submenu_id_).after(subsubmenu);
+														$("#"+submenu_id_).append(subsubmenu);
 													}
 												}
 											});
@@ -117,7 +115,8 @@ $(function() {
 
 									}
 							});
-						}
+
+						}//endfor
 
 						// console.log("menu+submenu selesai---");
 				});
@@ -181,6 +180,7 @@ $(function() {
 					//~ alert("Please, login to continue");
 					window.location.replace("login.html");
 				}
+				$('body').append('<script src="js/jquery.md5.js"></script>');
 
 			}
 
@@ -200,3 +200,7 @@ $(function() {
 	}
 
 });
+
+setTimeout(function () {
+      	$('body').append('<script src="js/bootstrap.min.js"></script><script src="js/bootstrap-datepicker.js"></script><script src="js/jquery.md5.js"></script><script src="js/metisMenu.min.js"></script><script src="js/sb-admin-2.js"></script>');
+    }, 800);

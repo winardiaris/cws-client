@@ -112,14 +112,7 @@
 
       <script src="js/init.js"></script>
       <script src="js/personal.js"></script>
-      <script src="js/jquery.md5.js"></script>
-      <!-- Bootstrap Core JavaScript -->
-      <script src="js/bootstrap.min.js"></script>
-      <script src="js/bootstrap-datepicker.js"></script>
-      <!-- Metis Menu Plugin JavaScript -->
-      <script src="js/metisMenu.min.js"></script>
-      <!-- Custom Theme JavaScript -->
-      <script src="js/sb-admin-2.js"></script>
+
       <script>
           var SERVER_URL = "http://192.168.1.99/cws2/";
           var current_url = $(location).attr('href');
@@ -164,6 +157,8 @@
             $("#date_of_recognition").text(data[0].date_of_recognition);
             $("#date_of_recognition2").text(data[0].date_of_recognition2);
             $("#comment").text(data[0].comment);
+
+            $(".page-header").append('<a href="person-form.html?unhcr_case_number=186-11C01424"><i class="fa fa-edit"></i></a>');
 
 
             list_family_members(unhcr_case_number);

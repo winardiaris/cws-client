@@ -52,6 +52,7 @@
 			            <div class="form-group">
 			               <label>UNHCR Case No: *</label> <span id="a"></span>
 			               <input class="form-control" name="unhcr_case_number1" id="unhcr_case_number">
+                     <h3 id='uu'></h3>
 			            </div>
 			         </div>
 			         <div class="col-lg-12">
@@ -71,18 +72,18 @@
 			                           <!-- form-biodata -->
 			                           <div class="col-lg-6">
 			                              <label>Name: *</label>
-			                              <input class="form-control" name="person_name" id="PersonName" required value="">
+			                              <input class="form-control" name="person_name" id="person_name" required value="">
 			                              <label>Country of Origin: *</label>
 			                              <input type="hidden" id="country2" value="" required>
-																		<input name="country_of_origin_id" list="CountryOrigin" class="form-control">
+																		<input name="country_of_origin_id" id="country_of_origin_id" list="CountryOrigin" class="form-control">
 																		<datalist id="CountryOrigin">
 
 																		</datalist>
 			                              <label>Date of Birth: *</label>
 			                              <div class="input-group date" data-provide="datepicker" data-date-format="yyyy-mm-dd">
-			                                 <input type="text" class="form-control" name="date_of_birth" id="DateOfBirth" placeholder="yyyy-mm-dd" value="" required><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+			                                 <input type="text" class="form-control" name="date_of_birth" id="date_of_birth" placeholder="yyyy-mm-dd" value="" required><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
 			                              </div>
-			                              <label>Age</label> <input class="form-control" name="age" placeholder="Age" id="Age" value="">
+			                              <label>Age</label> <input class="form-control" name="age" placeholder="Age" id="age" value="">
 			                              <label>Sex: *</label>
 			                              <div class="form-group">
 			                                 <label class="radio-inline"><input type="radio" name="sex" value="M" checked="">Male</label>
@@ -90,20 +91,20 @@
 			                              </div>
 			                              <label>Marital status: *</label>
 			                              <input type="hidden" id="MA" value="">
-			                              <select class="form-control" name="marital_status_id" id="marital"></select>
+			                              <select class="form-control" name="marital_status_id" id="marital_status_id"></select>
 			                              <label>Address (in detail): *</label>
 			                              <div class="form-group">
 			                                 <small>Province</small>
-			                                 <select name="address_province" id="province" class="form-control"></select>
+			                                 <select name="address_province" id="address_province" class="form-control"></select>
 			                                 <small>Regency / City</small>
-			                                 <select name="address_city" id="city" class="form-control"></select>
+			                                 <select name="address_city" id="address_city" class="form-control"></select>
 			                                 <small>Sub-district / VillAge</small>
-			                                 <select name="address_village" id="village" class="form-control"></select>
+			                                 <select name="address_village" id="address_village" class="form-control"></select>
 			                                 <small>In Detail</small>
-			                                 <textarea name="address_detail" class="form-control" id="detail" placeholder="Detail"></textarea>
+			                                 <textarea name="address_detail" class="form-control" id="address_detail" placeholder="Detail"></textarea>
 			                              </div>
 			                              <label>Phone No: *</label>
-			                              <input class="form-control" name="phone_number" id="phone" value="" required="">
+			                              <input class="form-control" name="phone_number" id="phone_number" value="" required="">
 			                              <label>Photo: </label>
 			                              <span id="upload"></span>
 			                           </div>
@@ -119,7 +120,7 @@
 			                                 <input type="text" class="form-control" name="date_arrival" id="date_arrival" value="" placeholder="yyyy-mm-dd"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
 			                              </div>
 			                              <br>
-			                              <input class="form-control" name="port_arrival" id="arrival" placeholder="Port Arrival" value="">
+			                              <input class="form-control" name="port_arrival" id="port_arrival" placeholder="Port Arrival" value="">
 			                              <hr>
 			                              <label>Previous occupation:</label>
 			                              <input class="form-control" name="previous_occupation" id="previous_occupation" value="">
@@ -136,14 +137,14 @@
 			                              </div>
 			                              <div class="row col-lg-6">
 			                                 <div class="input-group date" data-provide="datepicker" data-date-format="yyyy-mm-dd">
-			                                    <input type="text" class="form-control" name="date_of_recognition2" id="date_recognition2" placeholder="yyyy-mm-dd" value=""><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+			                                    <input type="text" class="form-control" name="date_of_recognition2" id="date_of_recognition2" placeholder="yyyy-mm-dd" value=""><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
 			                                 </div>
 			                              </div>
 			                              <br>
 			                              <br>
 			                              <br>
 			                              <label>Active?: </label>
-			                              <select class="form-control" name="active" id="status_active">
+			                              <select class="form-control" name="active" id="active">
 			                                 <option value="1">Active</option>
 			                                 <option value="2">Terminated</option>
 			                                 <option value="3">Deleted</option>
@@ -230,117 +231,176 @@
 
       <script src="js/init.js"></script>
       <script src="js/personal.js"></script>
-      <script src="js/jquery.md5.js"></script>
-      <!-- Bootstrap Core JavaScript -->
-      <script src="js/bootstrap.min.js"></script>
-      <script src="js/bootstrap-datepicker.js"></script>
-      <!-- Metis Menu Plugin JavaScript -->
-      <script src="js/metisMenu.min.js"></script>
-      <!-- Custom Theme JavaScript -->
-      <script src="js/sb-admin-2.js"></script>
+
       <script>
          var SERVER_URL = "http://192.168.1.99/cws2/";
          var secret_key = localStorage.getItem("secret_key");
-
-          $('#DateOfBirth').change(function(){
-             	var DateOfBirth = new Date(this.value);
-             	var today = new Date();
-             	var Age = Math.floor((today-DateOfBirth) / (365.25 * 24 * 60 * 60 * 1000));
-             	$('#Age').val(Age);
-         });
-          $('#family_date_of_birth').change(function(){
-             	var DateOfBirth = new Date(this.value);
-             	var today = new Date();
-             	var Age = Math.floor((today-DateOfBirth) / (365.25 * 24 * 60 * 60 * 1000));
-             	$('#family_age').val(Age);
-         });
-
-         //get country list
-         $.get(SERVER_URL+"?op=get_data_country_list",function(result){
-         		var country_select ="";
-         		var json = $.parseJSON(result);
-         		var data = json['data'];
-         		for(var i = 0; i <data.length;i++){
-         			var country_id = data[i].country_id;
-         			var country_name = data[i].country_name;
-         			country_select +="<option value='"+country_id+"'>"+country_name+"</option>";
-         		}
-         		$('#CountryOrigin').html(country_select);
-         });
-         //get marital status
-         $.get(SERVER_URL+"?op=get_marital_status_list",function(result){
-         		var marital_select ="";
-         		var json = $.parseJSON(result);
-         		var data = json['data'];
-         		for(var i = 0; i <data.length;i++){
-         			var marital_id = data[i].marital_id;
-         			var marital = data[i].marital;
-
-         			marital_select +="<option value='"+marital_id+"'>"+marital+"</option>";
-         		}
-         		$('#marital').html(marital_select);
+         var current_url = $(location).attr('href');
+         var unhcr_case_number_ = current_url.split("unhcr_case_number");
 
 
+         $('#date_of_birth').change(function(){
+             var DateOfBirth = new Date(this.value);
+             var today = new Date();
+             var Age = Math.floor((today-DateOfBirth) / (365.25 * 24 * 60 * 60 * 1000));
+             $('#age').val(Age);
+        });
+         $('#family_date_of_birth').change(function(){
+             var DateOfBirth = new Date(this.value);
+             var today = new Date();
+             var Age = Math.floor((today-DateOfBirth) / (365.25 * 24 * 60 * 60 * 1000));
+             $('#family_age').val(Age);
+        });
 
-         });
+        //get country list
+        $.get(SERVER_URL+"?op=get_data_country_list",function(result){
+           var country_select ="";
+           var json = $.parseJSON(result);
+           var data = json['data'];
+           for(var i = 0; i <data.length;i++){
+             var country_id = data[i].country_id;
+             var country_name = data[i].country_name;
+             country_select +="<option value='"+country_id+"'>"+country_name+"</option>";
+           }
+           $('#CountryOrigin').html(country_select);
+        });
+        //get marital status
+        $.get(SERVER_URL+"?op=get_marital_status_list",function(result){
+           var marital_select ="";
+           var json = $.parseJSON(result);
+           var data = json['data'];
+           for(var i = 0; i <data.length;i++){
+             var marital_id = data[i].marital_id;
+             var marital = data[i].marital;
 
-         //get province
-         $.get(SERVER_URL+"?op=get_data_region_province",function(result){
-         		var province ="";
-         		var json = $.parseJSON(result);
-         		var data = json['data'];
-         		for(var i = 0; i <data.length;i++){
-         			var region_id = data[i].region_id;
-         			var region_name = data[i].region_name;
-         			province +="<option value='"+region_id+"'>"+region_name+"</option>";
-         		}
-         		$('#province').html(province);
-         });
-
-         //get city
-         $('#province').change(function(){
-         	$('#village').html('');
-         	$.get(SERVER_URL+"?op=get_data_region_city&region_id="+$(this).val(),function(result){
-         			var city ="";
-         			var json = $.parseJSON(result);
-         			var data = json['data'];
-         			for(var i = 0; i <data.length;i++){
-         				var region_id = data[i].region_id;
-         				var region_name = data[i].region_name;
-         				city +="<option value='"+region_id+"'>"+region_name+"</option>";
-         			}
-         			$('#city').html(city);
-         	});
-         });
-
-         //get village
-         $('#city').change(function(){
-         	$.get(SERVER_URL+"?op=get_data_region_village&region_id="+$(this).val(),function(result){
-         			var village ="";
-         			var json = $.parseJSON(result);
-         			var data = json['data'];
-         			for(var i = 0; i <data.length;i++){
-         				var region_id = data[i].region_id;
-         				var region_name = data[i].region_name;
-         				village +="<option value='"+region_id+"'>"+region_name+"</option>";
-         			}
-         			$('#village').html(village);
-         	});
-         });
+             marital_select +="<option value='"+marital_id+"'>"+marital+"</option>";
+           }
+           $('#marital_status_id').html(marital_select);
 
 
-         //get family relation
-         $.get(SERVER_URL+"?op=get_data_family_relation_list",function(result){
-         		var family_list ="";
-         		var json = $.parseJSON(result);
-         		var data = json['data'];
-         		for(var i = 0; i <data.length;i++){
-         			var family_relation_id = data[i].family_relation_id;
-         			var relation = data[i].relation;
-         			family_list +="<option value='"+family_relation_id+"'>"+relation+"</option>";
-         		}
-         		$('#family_relation_id').html(family_list);
-         });
+
+        });
+        //get province
+        $.get(SERVER_URL+"?op=get_data_region_province",function(result){
+           var province ="";
+           var json = $.parseJSON(result);
+           var data = json['data'];
+           for(var i = 0; i <data.length;i++){
+             var region_id = data[i].region_id;
+             var region_name = data[i].region_name;
+             province +="<option value='"+region_id+"'>"+region_name+"</option>";
+           }
+           $('#address_province').html(province);
+        });
+
+        function get_city(region_id,field){
+          $.get(SERVER_URL+"?op=get_data_region_city&region_id="+region_id,function(result){
+              var city ="";
+              var json = $.parseJSON(result);
+              var data = json['data'];
+              for(var i = 0; i <data.length;i++){
+                var region_id = data[i].region_id;
+                var region_name = data[i].region_name;
+                city +="<option value='"+region_id+"'>"+region_name+"</option>";
+              }
+              $(field).html(city);
+          });
+        }
+        function get_village(region_id,field){
+          $.get(SERVER_URL+"?op=get_data_region_village&region_id="+region_id,function(result){
+              var village ="";
+              var json = $.parseJSON(result);
+              var data = json['data'];
+              for(var i = 0; i <data.length;i++){
+                var region_id = data[i].region_id;
+                var region_name = data[i].region_name;
+                village +="<option value='"+region_id+"'>"+region_name+"</option>";
+              }
+              $(field).html(village);
+          });
+        }
+        //get city
+        $('#address_province').change(function(){
+            $('#address_village').html('');
+            address_province_id = $(this).val();
+            get_city(address_province_id,"#address_city");
+        });
+
+        //get village
+        $('#address_city').change(function(){
+            get_village($(this).val(),"#address_village");
+        });
+        //get family relation
+        $.get(SERVER_URL+"?op=get_data_family_relation_list",function(result){
+           var family_list ="";
+           var json = $.parseJSON(result);
+           var data = json['data'];
+           for(var i = 0; i <data.length;i++){
+             var family_relation_id = data[i].family_relation_id;
+             var relation = data[i].relation;
+             family_list +="<option value='"+family_relation_id+"'>"+relation+"</option>";
+           }
+           $('#family_relation_id').html(family_list);
+        });
+
+         if(unhcr_case_number_.length>1){
+           var unhcr_case_number_get = unhcr_case_number_[1].replace("=","");
+           console.log("edit PersonalInformation");
+           $('#PersonalInformationForm').find("input[name='op']").val("person_update");
+           $('#SavePersonInformation').html('<i class="fa fa-save"></i> Update').removeClass("btn-success").addClass('btn-primary');
+           //isiin Form
+
+           $.get(SERVER_URL+"?op=person_view&secret_key="+secret_key+"&unhcr_case_number="+unhcr_case_number_get,function(result){
+             var json = $.parseJSON(result);
+             var data = json['data'];
+             console.log(data);
+
+
+
+             $("#photo-pp").attr("src",SERVER_URL+data[0].photo);
+             $("#person_name").val(data[0].person_name);
+             $("#unhcr_case_number").val(data[0].unhcr_case_number).hide();
+             $("#uu").html(data[0].unhcr_case_number);
+             $("#unhcr_case_number2").val(data[0].unhcr_case_number);
+             $("input[name='unhcr_case_number']").val(data[0].unhcr_case_number);
+             $("#country_of_origin_id").val(data[0].country_of_origin_id);
+             $("#date_of_birth").val(data[0].date_of_birth);
+             $("#age").val(data[0].age);
+             $("#marital_status_id").val(data[0].marital_status_id);
+             $("input[name='sex']").val(data[0].sex);
+             $("#address_province").val(data[0].address_province);
+             get_city(data[0].address_province,"#address_city");
+             $("#address_city").val(data[0].address_city);
+             get_village(data[0].address_city,"#address_village");
+             $("#address_village").val(data[0].address_village);
+             $("#address_detail").val(data[0].address_detail);
+             $("#phone_number").val(data[0].phone_number);
+             $("#active").val(data[0].active);
+             $("#status").val(data[0].status);
+             $("#port_arrival").val(data[0].port_arrival);
+             $("#previous_occupation").val(data[0].previous_occupation);
+             $("#willingness_to_volunteer").val(data[0].willingness_to_volunteer);
+             $("#comment").val(data[0].comment);
+
+             if(data[0].date_arrival=="0000-00-00"){$("#date_arrival").val("");}
+             else{$("#date_arrival").val(data[0].date_arrival);}
+
+             if(data[0].date_of_recognition=="0000-00-00"){$("#date_of_recognition").val("");}
+             else {$("#date_of_recognition").val(data[0].date_of_recognition);}
+             if(data[0].date_of_recognition2=="0000-00-00"){$("#date_of_recognition2").val("");}
+             else{$("#date_of_recognition2").val(data[0].date_of_recognition2);}
+
+             list_family_members(unhcr_case_number_get);
+
+
+           });
+
+
+
+
+         }
+
+
 
          $("#unhcr_case_number").change(function(){
          	var unhcr_case_number = $(this).val();
@@ -370,7 +430,7 @@
 						unhcr_case_number.focus();
 					}
 					else{
-						var a = $("#a").text();
+						var a = $("#a").val();
 						if(a=="In use"){
 							alert("UNHCR Case No: In use");
 							unhcr_case_number.focus();
@@ -385,16 +445,16 @@
 								dataType:'text',
 								success: function(result){
 									var json = $.parseJSON(result);
-									var data = json['data'];
-									var status = data.status;
+									var datas = json['data'];
+									var status = datas.status;
 									if(status=="success"){
 										$("#PersonalInformation").removeClass("in");
 										$("#ReportedFamily").addClass("in");
 										//~ window.location.href("#Education");
 									}
 									else{
+                    console.log($('#PersonalInformationForm').serialize());
 										alert(status);
-
 									}
 								},
 								error: function (request, status, error) {
@@ -456,6 +516,7 @@
           var secret_keys = localStorage.getItem("secret_key");
           var ops= "person_comment";
           var datas = { op: ops, secret_key: secret_keys,unhcr_case_number:unhcr_case_number.val(),comment:comments };
+          $(".comment").html('Comment: <small><i class="fa fa-spinner fa-pulse fa-fw "></i></small>');
           if(unhcr_case_number.val()==''){
             alert("UNHCR Case No: Must be filled !!");
             unhcr_case_number.focus();
@@ -473,7 +534,7 @@
                 var data = json['data'];
                 var status = data.status;
                 if(status=="success"){
-                  $(".comment").after(" <small class='text-success'>Comment saved <i class='fa fa-check'></i></small>")
+                  $(".comment").html(" Comment: <small class='text-success'>Comment saved <i class='fa fa-check'></i></small>");
                 }
                 else{
                   alert(status);
